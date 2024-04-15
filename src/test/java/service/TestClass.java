@@ -4,14 +4,16 @@ import domain.Nota;
 import domain.Student;
 import domain.Tema;
 import junit.framework.TestCase;
+import org.junit.Test;
 import repository.*;
 import validation.NotaValidator;
 import validation.StudentValidator;
 import validation.TemaValidator;
-
 import java.time.LocalDate;
 
-public class TestClass extends TestCase{
+import static junit.framework.TestCase.assertEquals;
+
+public class TestClass {
 
     StudentXMLRepo stud_XML_rep = new StudentXMLRepo("fisiere/Studenti.xml");
     NotaXMLRepo nota_XML_rep = new NotaXMLRepo("fisiere/Note.xml");
@@ -21,19 +23,21 @@ public class TestClass extends TestCase{
     NotaValidator notaValidator = new NotaValidator(stud_XML_rep, teme_XML_rep);
     Service service = new Service(stud_XML_rep, studentValidator, teme_XML_rep, temaValidator, nota_XML_rep, notaValidator);
 
-
+    @Test
     public void testAddStudent() {
         Student student = new Student("234", "Andrei", 934, "andrei@gmail.com");
         Student result = service.addStudent(student);
         assertEquals(student, result);
     }
 
+    @Test
     public void testAddAssignment() {
         Tema tema = new Tema("55", "descriere", 8, 5);
         Tema result1 = service.addTema(tema);
         assertEquals(tema, result1);
     }
 
+    @Test
     public void testAddGrade() {
 
         Tema tema = new Tema("55", "descriere", 8, 5);
@@ -44,6 +48,7 @@ public class TestClass extends TestCase{
         assertEquals(2.5, result);
     }
 
+    @Test
     public void testBigBangTesting(){
         testAddStudent();
         testAddAssignment();
