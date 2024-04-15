@@ -4,6 +4,7 @@ import domain.Nota;
 import domain.Student;
 import domain.Tema;
 import junit.framework.TestCase;
+import org.junit.Test;
 import repository.*;
 import validation.NotaValidator;
 import validation.StudentValidator;
@@ -11,7 +12,7 @@ import validation.TemaValidator;
 
 import java.time.LocalDate;
 
-public class TestClass extends TestCase {
+public class TestClass {
 
     StudentXMLRepo stud_XML_rep = new StudentXMLRepo("fisiere/Studenti.xml");
     NotaXMLRepo nota_XML_rep = new NotaXMLRepo("fisiere/Note.xml");
